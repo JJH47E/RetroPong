@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ballPhysics : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class ballPhysics : MonoBehaviour
     void Start()
     {
         reset = new Vector3(0f, 0f, 0f);
-        magnitude = PlayerPrefs.GetFloat("playerMove") * 1.75f;
+        magnitude = PlayerPrefs.GetFloat("playerMove") * 1f;
         ver = UnityEngine.Random.Range(((magnitude * 0.2f)), ((magnitude * 0.7f)));
         pick = UnityEngine.Random.Range(0, 2);
         Debug.Log(pick);
@@ -48,6 +49,18 @@ public class ballPhysics : MonoBehaviour
     {
         enemyGoals.text = enemyScore.ToString();
         playerGoals.text = myScore.ToString();
+        if(myScore == 7 || enemyScore == 7)
+        {
+            if(myScore == 7)
+            {
+                PlayerPrefs.SetInt("endGame", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("endGame", 0);
+            }
+            SceneManager.LoadScene("EndGame");
+        }
     }
 
     public IEnumerator RestartDelay(float n)

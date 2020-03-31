@@ -14,7 +14,7 @@ public class opponentMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = PlayerPrefs.GetFloat("playerMove") * 0.4f;
+        speed = PlayerPrefs.GetFloat("playerMove") * 0.35f;
         up_vel = new Vector2(0, speed);
         down_vel = new Vector2(0, -speed);
         moveDown = false;

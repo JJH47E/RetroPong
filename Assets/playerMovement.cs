@@ -10,6 +10,11 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!(PlayerPrefs.HasKey("playerMove")))
+        {
+            PlayerPrefs.SetFloat("playerMove", 4f);
+        }
+        speed = PlayerPrefs.GetFloat("playerMove");
         up_vel = new Vector2(0, speed);
         down_vel = new Vector2(0, -speed);
         PlayerPrefs.SetFloat("playerMove", speed);
